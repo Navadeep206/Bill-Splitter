@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+/* Design tokens. shadcn components read the standard names (primary, card, border...);
+   the extra ones (success, warning, danger, ink, avatar, subtle) are for this app. */
+:root {
+  --radius: 0.625rem;
+
+  --background: #edf0f3;
+  --foreground: #14171c;
+  --card: #ffffff;
+  --card-foreground: #14171c;
+  --primary: #2b47c9;
+  --primary-hover: #2239a8;
+  --primary-foreground: #ffffff;
+  --primary-soft: #f0f3fb;
+  --secondary-border: #9aa8c7;
+  --muted: #e6e9ee;
+  --muted-foreground: #556070;
+  --body-subtle: #3a4250;
+  --accent: #f0f3fb;
+  --accent-foreground: #1e3494;
+  --border: #d5dbe3;
+  --divider: #e4e8ee;
+  --input: #8792a2;
+  --ring: #2b47c9;
+  --destructive: #b42318;
+
+  --success: #1a6b3c;
+  --warning: #7a4300;
+  --warning-bg: #fff6e5;
+  --warning-border: #ebc98c;
+  --danger-bg: #fdf1ef;
+  --danger-border: #f1b8af;
+  --ink: #14171c;
+  --ink-muted: #c9d0da;
+  --avatar: #e6ebf7;
+  --avatar-foreground: #22389e;
+  --subtle: #f5f7fa;
+  --subtle-border: #e1e6ec;
+  --skeleton: #dfe4ea;
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 6px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary-border: var(--secondary-border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-body-subtle: var(--body-subtle);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-divider: var(--divider);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-border: var(--warning-border);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-border: var(--danger-border);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-avatar: var(--avatar);
+  --color-avatar-foreground: var(--avatar-foreground);
+  --color-subtle: var(--subtle);
+  --color-subtle-border: var(--subtle-border);
+  --color-skeleton: var(--skeleton);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  a {
+    @apply text-primary hover:text-accent-foreground;
+  }
+}
+
+/* Money is always set in the mono face with tabular digits so columns line up. */
+@utility money {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
